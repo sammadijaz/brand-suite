@@ -1,0 +1,28 @@
+@page { size: A4; margin: 22mm; }
+* { box-sizing: border-box; }
+body { color: #172b35; font-family: Arial, Helvetica, sans-serif; font-size: 11pt; line-height: 1.4; margin: 0; }
+header { border-bottom: 0.5pt solid #172b35; padding-bottom: 4mm; margin-bottom: 8mm; }
+header img { width: 30mm; max-height: 12mm; object-fit: contain; vertical-align: middle; margin-right: 4mm; }
+header strong { font-size: 16pt; }
+h1 { font-size: 23pt; line-height: 1.2; margin: 7mm 0; }
+h2 { font-size: 13pt; margin: 6mm 0 2mm; break-after: avoid; }
+p { margin: 0 0 3mm; orphans: 3; widows: 3; overflow-wrap: anywhere; }
+table { border-collapse: collapse; width: 100%; table-layout: fixed; margin: 3mm 0; }
+th,td { text-align: left; vertical-align: top; padding: 2mm; border-bottom: 0.5pt solid #aaa; overflow-wrap: anywhere; }
+thead { display: table-header-group; }
+tr, .signature { break-inside: avoid; }
+p:has(+ .signature) { break-after: avoid; }
+table:has(+ .signature), table:has(+ .note) { break-after: avoid; }
+.signature, table + .note { break-before: avoid; }
+figure { margin: 4mm 0; break-inside: avoid; }
+figure img { max-width: 100%; object-fit: contain; }
+figcaption,footer { font-size: 9pt; }
+footer { border-top: 0.5pt solid #aaa; margin-top: 8mm; padding-top: 3mm; }
+.note { border-left: 2pt solid #172b35; padding-left: 3mm; }
+.page-break { break-before: page; }
+.blank { min-height: 204mm; }
+@media print {
+  @page { margin: 37mm 22mm 29mm; }
+  header, footer { display: none; }
+}
+@media screen { body { max-width: 166mm; margin: 10mm auto; padding: 0 4mm; } }

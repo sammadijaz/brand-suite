@@ -1,0 +1,72 @@
+[
+  {
+    "id": "multi-company",
+    "input": "scenarios/multi-company.json",
+    "expected": "reject mixed identity"
+  },
+  {
+    "id": "conflicting-source",
+    "input": "scenarios/conflicting-source.json",
+    "expected": "visible conflict and execution block"
+  },
+  {
+    "id": "no-approved-logo",
+    "input": "scenarios/no-approved-logo.json",
+    "expected": "provisional typography, no claimed master"
+  },
+  {
+    "id": "low-resolution-png",
+    "input": "scenarios/low-resolution-png.json",
+    "expected": "retain raster original; explicit conversion/quality blocker"
+  },
+  {
+    "id": "opaque-corner-logo",
+    "input": "scenarios/opaque-corner-logo.json",
+    "expected": "retain opaque original; no invented transparency or vector master"
+  },
+  {
+    "id": "unavailable-font",
+    "input": "scenarios/unavailable-font.json",
+    "expected": "documented substitution"
+  },
+  {
+    "id": "long-name",
+    "input": "scenarios/long-name.json",
+    "expected": "wrap or explicit stamp-size/layout gate; no illegible squeezing"
+  },
+  {
+    "id": "long-url-attachments",
+    "input": "scenarios/long-url-attachments.json",
+    "expected": "reflow without clipping"
+  },
+  {
+    "id": "rtl",
+    "input": "scenarios/rtl.json",
+    "expected": "explicit unsupported-language blocker"
+  },
+  {
+    "id": "non-latin",
+    "input": "scenarios/non-latin.json",
+    "expected": "explicit glyph/language scope blocker unless reviewed renderer added"
+  },
+  {
+    "id": "offline-website",
+    "input": "scenarios/offline-website.json",
+    "expected": "limited local evidence with access result"
+  },
+  {
+    "id": "private-website",
+    "input": "scenarios/private-website.json",
+    "expected": "deny private destination; no access-control bypass"
+  },
+  {
+    "id": "currency-jpy",
+    "input": "scenarios/currency-jpy.json",
+    "expected": "rounded whole-yen amounts, tax/receipt gates"
+  },
+  {
+    "id": "currency-kwd",
+    "input": "scenarios/currency-kwd.json",
+    "expected": "three-decimal totals and partial-payment balance"
+  }
+]

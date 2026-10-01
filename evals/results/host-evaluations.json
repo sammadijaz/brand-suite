@@ -1,0 +1,5 @@
+{
+  "status": "NOT_RUN",
+  "reason": "No separate host-agent evaluation runner was invoked. This implementation session and deterministic tests are not independent agent evaluations.",
+  "scores": null
+}

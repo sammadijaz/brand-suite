@@ -1,0 +1,11 @@
+node_modules/
+.venv/
+.work/
+output/
+*.log
+__pycache__/
+BUILD_BRAND_SUITE_SKILL.md
+REFERENCE_DOCUMENT_CATALOGUE.json
+*.zip
+!examples/**/*.zip
+tests/fixtures/codebase/

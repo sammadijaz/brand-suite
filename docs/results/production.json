@@ -1,0 +1,73 @@
+{
+  "timestamp": "2026-10-01T00:51:27.413Z",
+  "installation_agents": [
+    {
+      "agent": "codex",
+      "installed": true,
+      "path": "<temporary-project>\\codex\\.agents\\skills\\brand-suite",
+      "cli": "skills 1.7.0",
+      "project_scope": true,
+      "method": "copy"
+    },
+    {
+      "agent": "claude-code",
+      "installed": true,
+      "path": "<temporary-project>\\claude-code\\.claude\\skills\\brand-suite",
+      "cli": "skills 1.7.0",
+      "project_scope": true,
+      "method": "copy"
+    }
+  ],
+  "execution_environment": {
+    "platform": "win32",
+    "node": "v24.15.0",
+    "word": "16.0",
+    "browser": "154.0.8037.59",
+    "python": "3.14.4"
+  },
+  "source_independent": true,
+  "original_skill_source_unavailable_during_execution": true,
+  "target_unchanged": true,
+  "suites": [
+    {
+      "fixture": "full",
+      "baseline": 108,
+      "word_pages": 50,
+      "html_pages": 59,
+      "technical_pass": true,
+      "zip_reopened": true,
+      "execution_approved": false,
+      "archive": "brand-suite-full-synthetic-v0.1.0.zip",
+      "archive_sha256": "0c1454e55b789a097faa66f10e5def934571a5b0662156788b1707fc12995455"
+    },
+    {
+      "fixture": "messy",
+      "baseline": 108,
+      "word_pages": 52,
+      "html_pages": 61,
+      "technical_pass": true,
+      "zip_reopened": true,
+      "execution_approved": false,
+      "archive": "brand-suite-messy-synthetic-v0.1.0.zip",
+      "archive_sha256": "73b75f1bc04dc8da4e454ef9cd6c4431652d79f966dcc88f30d9891a9509d7f4"
+    }
+  ],
+  "pagination_repair": {
+    "ids": [
+      "P05",
+      "A07"
+    ],
+    "runtime": "isolated installed copy with corrected production.py and print.css",
+    "timestamp": "2026-10-01T00:59:08.506Z",
+    "messy_additional_ids": [
+      "A04",
+      "F03"
+    ]
+  },
+  "stamp_repair": {
+    "fixture": "messy",
+    "id": "S07",
+    "reason": "unincorporated-project captions",
+    "timestamp": "2026-10-01T01:07:48.556Z"
+  }
+}

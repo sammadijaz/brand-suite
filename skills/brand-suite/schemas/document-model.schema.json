@@ -1,0 +1,183 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "folder": {
+      "type": "string"
+    },
+    "paper": {
+      "enum": [
+        "A4",
+        "Letter"
+      ]
+    },
+    "applicability": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "applicable": {
+          "type": "boolean"
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "applicable",
+        "reason"
+      ]
+    },
+    "release_state": {
+      "enum": [
+        "DRAFT_TEMPLATE",
+        "BLOCKED_MISSING_FACTS",
+        "READY_FOR_REVIEW",
+        "APPROVED_BY_AUTHORIZED_REVIEWER"
+      ]
+    },
+    "entity_id": {
+      "type": "string"
+    },
+    "header": {
+      "type": "string"
+    },
+    "footer": {
+      "type": "string"
+    },
+    "blank": {
+      "type": "boolean"
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "type",
+          "category"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "type": {
+            "enum": [
+              "heading",
+              "paragraph",
+              "list",
+              "table",
+              "image",
+              "signature",
+              "note",
+              "page-break"
+            ]
+          },
+          "category": {
+            "enum": [
+              "fact",
+              "proposed-term",
+              "review",
+              "design",
+              "instruction"
+            ]
+          },
+          "text": {
+            "type": "string"
+          },
+          "level": {
+            "enum": [
+              1,
+              2,
+              3
+            ]
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "src": {
+            "type": "string"
+          },
+          "alt": {
+            "type": "string"
+          },
+          "width_mm": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 170
+          },
+          "height_mm": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 230
+          },
+          "reference": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "fields_used": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unresolved": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "review_requirements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "template_version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "title",
+    "folder",
+    "paper",
+    "applicability",
+    "release_state",
+    "entity_id",
+    "header",
+    "footer",
+    "blank",
+    "blocks",
+    "fields_used",
+    "unresolved",
+    "review_requirements",
+    "template_version"
+  ]
+}

@@ -1,0 +1,20 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {json,writeJson} from '../skills/brand-suite/lib/safety.mjs';
+const base=json('tests/fixtures/full.json'),scenarios={};
+function add(name,change,expected){const x=structuredClone(base);change(x);scenarios[name]={input:x,expected};writeJson('tests/fixtures/scenarios/'+name+'.json',x);}
+add('multi-company',x=>{x.fields['company.tax_identifier'].scope='other-entity';},'reject mixed identity');
+add('conflicting-source',x=>{x.fields['company.legal_name'].status='CONFLICTED';x.contradictions=[{field:'company.legal_name',candidates:['old README identity','owner-selected entity'],resolution:null}];},'visible conflict and execution block');
+add('no-approved-logo',x=>{x.brand.logo=null;},'provisional typography, no claimed master');
+add('low-resolution-png',x=>{x.brand.logo='tests/fixtures/low-resolution.png';},'retain raster original; explicit conversion/quality blocker');
+add('opaque-corner-logo',x=>{x.brand.logo='tests/fixtures/opaque-corners.png';},'retain opaque original; no invented transparency or vector master');
+add('unavailable-font',x=>{x.brand.font='Missing Fixture Font';},'documented substitution');
+add('long-name',x=>{x.fields['company.legal_name'].value='Synthetic International Collaborative Design and Operations Research Company Limited';x.fields['company.mailing_address'].value='Suite 1234, An Intentionally Long Fictional Address for Wrapping Tests, Example Business Campus, Sample City, Fictional District, EX 100000';x.brand.stamp_company_mm=80;},'wrap or explicit stamp-size/layout gate; no illegible squeezing');
+add('long-url-attachments',x=>{x.terms['letter.attachments']='DEMO attachment index: '+Array.from({length:30},(_,i)=>'item-'+i).join(', ');x.terms['letter.body']='Synthetic long URL https://example.invalid/'+('segment/'.repeat(40));},'reflow without clipping');
+add('rtl',x=>{x.language='ar';x.fields['company.trading_name'].value='مثال';},'explicit unsupported-language blocker');
+add('non-latin',x=>{x.fields['company.trading_name'].value='示例';},'explicit glyph/language scope blocker unless reviewed renderer added');
+add('offline-website',x=>{x.website={authorized:true,url:'https://example.invalid',budget:3};},'limited local evidence with access result');
+add('private-website',x=>{x.website={authorized:true,url:'https://127.0.0.1',budget:3};},'deny private destination; no access-control bypass');
+add('currency-jpy',x=>{x.finance={currency:'JPY',precision:0,items:[{description:'Synthetic item',quantity:3,unit_price:'120.5'}],tax:null,paid:'100',payment_status:'UNVERIFIED'};},'rounded whole-yen amounts, tax/receipt gates');
+add('currency-kwd',x=>{x.finance={currency:'KWD',precision:3,items:[{description:'Synthetic item',quantity:3,unit_price:'1.2345'}],tax:'0.000',paid:'1.000',payment_status:'OBSERVED_RECEIVED'};},'three-decimal totals and partial-payment balance');
+writeJson('tests/fixtures/scenarios.json',Object.entries(scenarios).map(([id,x])=>({id,input:'scenarios/'+id+'.json',expected:x.expected})));

@@ -1,0 +1,43 @@
+{
+  "timestamp": "2026-10-01T00:55:25.119Z",
+  "cases": [
+    {
+      "case": "audit-only",
+      "passed": true
+    },
+    {
+      "case": "stationery-deferred-render-resume",
+      "passed": true
+    },
+    {
+      "case": "validate-existing",
+      "passed": true
+    },
+    {
+      "case": "changed-brand-update-preserves-prior",
+      "passed": true
+    },
+    {
+      "case": "user-edited-master-protected",
+      "passed": true
+    },
+    {
+      "case": "existing-output-protected",
+      "passed": true
+    },
+    {
+      "case": "missing-dependency-preserves-controls-without-fake-pdf",
+      "passed": true
+    },
+    {
+      "case": "low-resolution-png",
+      "passed": true,
+      "scope": "explicit raster conversion blocker, original retained"
+    },
+    {
+      "case": "opaque-corner-logo",
+      "passed": true,
+      "scope": "explicit raster conversion blocker, original retained"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "fields": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z][a-z0-9_]*(\\.[a-z][a-z0-9_]*)+$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "value",
+          "status",
+          "source_id",
+          "locator",
+          "observed_at",
+          "sha256",
+          "scope",
+          "verification"
+        ],
+        "properties": {
+          "value": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          },
+          "status": {
+            "enum": [
+              "VERIFIED_PRIMARY",
+              "OWNER_PROVIDED",
+              "IMPLEMENTATION_OBSERVED",
+              "PUBLICLY_CLAIMED",
+              "PROPOSED",
+              "CONFLICTED",
+              "UNKNOWN"
+            ]
+          },
+          "source_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "locator": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "observed_at": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "verification": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "margin_mm": {
+          "const": 22
+        },
+        "body_pt": {
+          "const": 11
+        },
+        "footer_pt": {
+          "const": 9
+        },
+        "paper": {
+          "enum": [
+            "A4",
+            "Letter"
+          ]
+        }
+      },
+      "required": [
+        "margin_mm",
+        "body_pt",
+        "footer_pt",
+        "paper"
+      ]
+    },
+    "provisional": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "fields",
+    "geometry",
+    "provisional"
+  ]
+}

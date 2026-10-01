@@ -1,0 +1,109 @@
+{
+  "timestamp": "2026-10-01T00:56:16.600Z",
+  "cases": [
+    {
+      "case": "split-word-run-token",
+      "passed": true,
+      "technical_pass": true,
+      "detected": [
+        "Unresolved field/alternative 04_Agreements/A01.docx"
+      ]
+    },
+    {
+      "case": "header-footer-token",
+      "passed": true,
+      "technical_pass": true,
+      "detected": [
+        "Unresolved field/alternative 04_Agreements/A01.docx"
+      ]
+    },
+    {
+      "case": "missing-processing-schedule",
+      "passed": true,
+      "technical_pass": false,
+      "detected": [
+        "Missing required schedule A07"
+      ]
+    },
+    {
+      "case": "both-alternatives",
+      "passed": true,
+      "technical_pass": false,
+      "detected": [
+        "Both alternatives selected A01",
+        "Missing or disordered semantic content A01.docx",
+        "Missing or disordered semantic content A01.html",
+        "Missing or disordered semantic content A01.pdf"
+      ]
+    },
+    {
+      "case": "stale-pdf",
+      "passed": true,
+      "technical_pass": false,
+      "detected": [
+        "Missing or disordered semantic content A01.pdf",
+        "PDF page count mismatch 04_Agreements/A01.pdf",
+        "Stale rendering inspection A01"
+      ]
+    },
+    {
+      "case": "wrong-entity-footer",
+      "passed": true,
+      "technical_pass": false,
+      "detected": [
+        "Wrong entity or inconsistent footer A01.docx"
+      ]
+    },
+    {
+      "case": "broken-link",
+      "passed": true,
+      "technical_pass": false,
+      "detected": [
+        "Broken local link index.html"
+      ]
+    },
+    {
+      "case": "hidden-private-text",
+      "passed": true,
+      "technical_pass": false,
+      "detected": [
+        "Hidden HTML text 02_Stationery/S04.html",
+        "Secret/private canary 02_Stationery/S04.html"
+      ]
+    },
+    {
+      "case": "currency-total-mismatch",
+      "passed": true,
+      "technical_pass": false,
+      "detected": [
+        "Currency totals inconsistent"
+      ]
+    },
+    {
+      "case": "changed-approved-source",
+      "passed": true,
+      "technical_pass": false,
+      "detected": [
+        "Stale hash/size 08_Controls/company-profile.json",
+        "Wrong entity in footer A01",
+        "Wrong entity in footer A02",
+        "Wrong entity in footer A03",
+        "Wrong entity in footer A04",
+        "Wrong entity in footer A05"
+      ]
+    },
+    {
+      "case": "harmless-brackets",
+      "passed": true,
+      "technical_pass": true,
+      "detected": []
+    },
+    {
+      "case": "fake-approval",
+      "passed": true,
+      "technical_pass": true,
+      "detected": []
+    }
+  ],
+  "scope": "Read-only release-checker adversarial mutations, synthetic package only"
+}

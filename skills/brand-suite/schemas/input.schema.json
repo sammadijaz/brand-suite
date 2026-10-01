@@ -1,0 +1,463 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "mode": {
+      "enum": [
+        "full-suite",
+        "audit-only",
+        "stationery-only",
+        "update-existing",
+        "validate-existing"
+      ]
+    },
+    "language": {
+      "enum": [
+        "en"
+      ]
+    },
+    "paper": {
+      "enum": [
+        "A4",
+        "Letter"
+      ]
+    },
+    "entity_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fictional": {
+      "type": "boolean"
+    },
+    "fields": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z][a-z0-9_]*(\\.[a-z][a-z0-9_]*)+$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "value",
+          "status",
+          "source_id",
+          "locator",
+          "observed_at",
+          "sha256",
+          "scope",
+          "verification"
+        ],
+        "properties": {
+          "value": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          },
+          "status": {
+            "enum": [
+              "VERIFIED_PRIMARY",
+              "OWNER_PROVIDED",
+              "IMPLEMENTATION_OBSERVED",
+              "PUBLICLY_CLAIMED",
+              "PROPOSED",
+              "CONFLICTED",
+              "UNKNOWN"
+            ]
+          },
+          "source_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "locator": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "observed_at": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "verification": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "primary": {
+          "type": "string",
+          "pattern": "^#[a-fA-F0-9]{6}$"
+        },
+        "ink": {
+          "type": "string",
+          "pattern": "^#[a-fA-F0-9]{6}$"
+        },
+        "accent": {
+          "type": "string",
+          "pattern": "^#[a-fA-F0-9]{6}$"
+        },
+        "font": {
+          "type": "string"
+        },
+        "logo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "logo_rights": {
+          "type": "string"
+        },
+        "stamp_company_mm": {
+          "type": "number",
+          "minimum": 30,
+          "maximum": 80
+        },
+        "stamp_signatory_mm": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number",
+            "minimum": 15,
+            "maximum": 100
+          }
+        }
+      },
+      "required": [
+        "primary",
+        "ink",
+        "accent",
+        "font",
+        "logo",
+        "logo_rights",
+        "stamp_company_mm",
+        "stamp_signatory_mm"
+      ]
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "owner",
+              "file",
+              "official",
+              "public",
+              "synthetic"
+            ]
+          },
+          "locator": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "scope": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "locator",
+          "sha256",
+          "scope"
+        ]
+      }
+    },
+    "reviewed_paths": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "contradictions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "website": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "authorized": {
+          "type": "boolean"
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "budget": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        }
+      },
+      "required": [
+        "authorized",
+        "url",
+        "budget"
+      ]
+    },
+    "applicability": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "applicable": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "applicable",
+          "reason",
+          "title"
+        ]
+      }
+    },
+    "terms": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "string",
+          "number",
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "finance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "currency": {
+          "enum": [
+            "USD",
+            "GBP",
+            "EUR",
+            "PKR",
+            "JPY",
+            "KWD"
+          ]
+        },
+        "precision": {
+          "enum": [
+            0,
+            2,
+            3
+          ]
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "description": {
+                "type": "string"
+              },
+              "quantity": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100000
+              },
+              "unit_price": {
+                "type": "string",
+                "pattern": "^\\d+(\\.\\d+)?$"
+              }
+            },
+            "required": [
+              "description",
+              "quantity",
+              "unit_price"
+            ]
+          }
+        },
+        "tax": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^\\d+(\\.\\d+)?$"
+        },
+        "paid": {
+          "type": "string",
+          "pattern": "^\\d+(\\.\\d+)?$"
+        },
+        "payment_status": {
+          "enum": [
+            "UNVERIFIED",
+            "OBSERVED_RECEIVED",
+            "SETTLED"
+          ]
+        }
+      },
+      "required": [
+        "currency",
+        "precision",
+        "items",
+        "tax",
+        "paid",
+        "payment_status"
+      ]
+    },
+    "model_overrides": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "type",
+            "category"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]+$"
+            },
+            "type": {
+              "enum": [
+                "heading",
+                "paragraph",
+                "list",
+                "table",
+                "image",
+                "signature",
+                "note",
+                "page-break"
+              ]
+            },
+            "category": {
+              "enum": [
+                "fact",
+                "proposed-term",
+                "review",
+                "design",
+                "instruction"
+              ]
+            },
+            "text": {
+              "type": "string"
+            },
+            "level": {
+              "enum": [
+                1,
+                2,
+                3
+              ]
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "rows": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "src": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "width_mm": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 170
+            },
+            "height_mm": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 230
+            },
+            "reference": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "prior": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "mode",
+    "language",
+    "paper",
+    "entity_id",
+    "fictional",
+    "fields",
+    "brand",
+    "sources",
+    "reviewed_paths",
+    "contradictions",
+    "website",
+    "applicability",
+    "terms",
+    "finance",
+    "model_overrides",
+    "prior"
+  ]
+}

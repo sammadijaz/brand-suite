@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-10-01T01:08:44.631159+00:00",
+  "cases": [
+    {
+      "case": "parent path",
+      "rejected": true
+    },
+    {
+      "case": "Windows parent path",
+      "rejected": true
+    },
+    {
+      "case": "drive path",
+      "rejected": true
+    },
+    {
+      "case": "external entity",
+      "rejected": true
+    },
+    {
+      "case": "macro part",
+      "rejected": true
+    },
+    {
+      "case": "external relationship",
+      "rejected": true
+    }
+  ],
+  "extraction_or_office_execution": false
+}
