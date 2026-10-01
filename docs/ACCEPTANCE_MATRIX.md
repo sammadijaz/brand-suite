@@ -19,7 +19,7 @@ Local implementation gates are verified for the declared English/A4/Letter fixtu
 | Security/privacy (19) | traversal, injection, SSRF, secret/privacy checks | denied assets and paths; renderer egress denied; no private publication |
 | Fixtures/evals (20) | complete and messy synthetic fixtures, adversarial cases | actual outcomes; agent evals separate from unit tests |
 | Documentation/CI (22, 23) | docs, contribution/security/license, CI | useful setup; real render job; no fake badges |
-| Publication (24) | authenticated owner sammadijaz; new repository absence verified | first push authorized after local gates; CI, remote smoke and release remain pending until executed |
+| Publication (24) | authenticated owner sammadijaz; public repository created and push verified | GitHub copy installation and 108-artifact build passed at recorded commit; release requires passing GitHub CI |
 
 ## Verified local checkpoint
 

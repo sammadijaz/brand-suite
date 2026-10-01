@@ -1,0 +1,47 @@
+{
+  "timestamp": "2026-10-01T01:27:36.938Z",
+  "repository": "sammadijaz/brand-suite",
+  "commit": "6711c42e11f08fb038593adbfae892ab535602f0",
+  "cli": "skills 1.7.0",
+  "remote_listing": true,
+  "remote_copy_install": true,
+  "agent": "codex",
+  "project_scope": true,
+  "resource_hashes": [
+    {
+      "path": "scripts/brand-suite.mjs",
+      "sha256": "82cd58a7ffc4e8a873e263be9c3b561f65f9d9eeaca52fa68845ad8003b88ca9"
+    },
+    {
+      "path": "scripts/production.py",
+      "sha256": "98161c0a3ae1d97f60dee6bca69ad17131a58b1510972f111ed62b8d25f358b0"
+    },
+    {
+      "path": "templates/catalogue.json",
+      "sha256": "39176ecc789b81f154dba7f0fe09140091d045fc413f20b765fa7af328bde1d5"
+    },
+    {
+      "path": "templates/documents/clauses.mjs",
+      "sha256": "5f3699920c51191506ab97e82681ce89d6b38fbcd239861a4ae3d158289fd92d"
+    },
+    {
+      "path": "schemas/input.schema.json",
+      "sha256": "f3963a77d5a7a4d3c1a8cb567d669ba8603bf2a6f10cedb1c41261bb7b423b89"
+    },
+    {
+      "path": "references/brand-principles.md",
+      "sha256": "7c844cd4fc00580e53d9d10a5e22e2eb5dddccc80a75e45783f2caa32d369f13"
+    }
+  ],
+  "baseline_artifacts": 108,
+  "technical_pass": true,
+  "target_unchanged": true,
+  "execution_approved": false,
+  "environment": {
+    "platform": "win32",
+    "node": "v24.15.0",
+    "document_renderer": "16.0",
+    "browser": "154.0.8037.59"
+  },
+  "visual_review": "NOT RUN for this independent smoke build; local release example PDFs have their own complete visual ledger"
+}

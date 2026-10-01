@@ -31,6 +31,12 @@ node scripts/mode-smoke.mjs
 
 The integration report provides the generated suite paths. Rendering needs permitted local fonts, Python, Word or LibreOffice, and Chrome or explicitly installed Playwright Chromium. Do not run multiple Word exports concurrently. Keep temporary files on a volume with adequate free space. CI repeats real rendering and structural checks; AI visual records are specific to the locally reviewed PDFs.
 
+## GitHub installation and CI
+
+The public repository is https://github.com/sammadijaz/brand-suite. A fresh project installed the published skill using skills 1.7.0, verified six packaged resources against the pushed commit, installed dependencies and generated all 108 artifacts with technical validation passing and target hashes unchanged. See [remote installation](results/remote-install.json) for the exact tested commit. This independent smoke build has no additional visual-review claim.
+
+The first GitHub CI run passed repository tests and hostile Office-container tests, then exposed a Windows-specific npm path in the integration harness on Linux. The harness now resolves npm from the invoking npm process or the platform installation layout. Release publication requires the subsequent CI run to pass; current run status is available in GitHub Actions.
+
 ## Scope and unrun checks
 
 The helper provides bounded inventory and host-review inputs; it cannot infer actual production behavior from route names. Public HTTPS collection is bounded and DNS-validated; offline, private-address and authenticated states remain limited coverage. Input PNGs are retained and assessed, then production stops with a conversion/quality blocker until a reviewed passive SVG is supplied. The tool does not invent vectors or transparency. Automatic negotiated DOCX import, RTL and non-Latin production are explicitly unsupported in this version.

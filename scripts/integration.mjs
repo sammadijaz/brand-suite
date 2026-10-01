@@ -5,7 +5,8 @@ import {spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 import {fileHash,json,writeJson} from '../skills/brand-suite/lib/safety.mjs';
 const root=process.cwd(),workspace=fs.mkdtempSync(path.join(os.tmpdir(),'brand-suite-installed-'));
-const npmCli=process.env.BRAND_SUITE_NPM_CLI||path.join(path.dirname(process.execPath),'node_modules/npm/bin/npm-cli.js');
+import {npmCLI} from './npm-cli.mjs';
+const npmCli=npmCLI();
 function command(args,cwd=workspace,timeout=300000,expected=0){const r=spawnSync(process.execPath,args,{cwd,encoding:'utf8',windowsHide:true,timeout,maxBuffer:4_000_000,env:{...process.env,DISABLE_TELEMETRY:'1'}});if(r.status!==expected)throw Error('Command failed: '+args.slice(0,3).join(' ')+'\n'+r.stderr+'\n'+r.stdout);return r.stdout;}
 const skillsCLI=path.join(root,'node_modules/skills/bin/cli.mjs');
 const installs=[];
